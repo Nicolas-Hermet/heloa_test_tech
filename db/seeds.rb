@@ -20,33 +20,33 @@ ActiveRecord::Base.connection.reset_pk_sequence!('primary_posts_tags')
 ActiveRecord::Base.connection.reset_pk_sequence!('post_tags')
 
 json = JSON.parse(File.read(Rails.root.join("db/articles_simplified.json"))) # TODO: Dynamically handle the folder(s
-json['posts'].each do |post_data|
+json['posts'].each_with_index do |post_data, index|
   current_post = Post.find_or_create_by!(uuid: post_data["uuid"]) do |post|
-    post.title = post_data['title'],
-    post.slug = post_data['slug'],
-    post.html = post_data['html'],
-    post.feature_image = post_data['feature_image'],
-    post.featured = post_data['featured'],
-    post.published_at = post_data['published_at'],
-    post.custom_excerpt = post_data['custom_excerpt'],
-    post.excerpt = post_data['excerpt'],
-    post.reading_time = post_data['reading_time'],
-    post.access = post_data['access'],
-    post.comments = post_data['comments'],
-    post.og_image = post_data['og_image'],
-    post.og_title = post_data['og_title'],
-    post.og_description = post_data['og_description'],
-    post.twitter_image = post_data['twitter_image'],
-    post.twitter_title = post_data['twitter_title'],
-    post.twitter_description = post_data['twitter_description'],
-    post.meta_title = post_data['meta_title'],
-    post.meta_description = post_data['meta_description'],
-    post.email_subject = post_data['email_subject'],
-    post.frontmatter = post_data['frontmatter'],
-    post.feature_image_alt = post_data['feature_image_alt'],
-    post.feature_image_caption = post_data['feature_image_caption'],
-    post.created_at = post_data['created_at'],
-    post.updated_at = post_data['updated_at'],
+    post.title = post_data['title']
+    post.slug = post_data['slug']
+    post.html = post_data['html']
+    post.feature_image = post_data['feature_image']
+    post.featured = post_data['featured']
+    post.published_at = post_data['published_at']
+    post.custom_excerpt = post_data['custom_excerpt']
+    post.excerpt = post_data['excerpt']
+    post.reading_time = post_data['reading_time']
+    post.access = post_data['access']
+    post.comments = post_data['comments']
+    post.og_image = post_data['og_image']
+    post.og_title = post_data['og_title']
+    post.og_description = post_data['og_description']
+    post.twitter_image = post_data['twitter_image']
+    post.twitter_title = post_data['twitter_title']
+    post.twitter_description = post_data['twitter_description']
+    post.meta_title = post_data['meta_title']
+    post.meta_description = post_data['meta_description']
+    post.email_subject = post_data['email_subject']
+    post.frontmatter = post_data['frontmatter']
+    post.feature_image_alt = post_data['feature_image_alt']
+    post.feature_image_caption = post_data['feature_image_caption']
+    post.created_at = post_data['created_at']
+    post.updated_at = post_data['updated_at']
     post.visibility = post_data['visibility']
   end
   post_data["tags"].each do |tag_data|
