@@ -1,0 +1,9 @@
+fr:
+  posts:
+    index:
+      title: "Vos articles de blogs"
+      search_field: "Cherchez les par mot clef"
+      search_button: "Rechercher"
+      search_placeholder: "Vos mots clefs"
+      previous: "préc"
+      next: "suiv"
