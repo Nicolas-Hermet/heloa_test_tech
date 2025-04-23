@@ -19,28 +19,30 @@
               <!-- Search field -->
               <div x-data="{ category: 1 }">
                   <div class="flex justify-center pb-12 max-md:hidden md:pb-20">
-                      <form class="mx-auto max-w-[440px]">
-                          <div class="flex gap-3">
-                              <input
-                                  id="free-text"
-                                  type="free-text"
-                                  class="form-input w-full"
-                                  placeholder="<%= t('.search_placeholder')  %>"
-                                  aria-label="free-text"
-                              />
-                              <button
-                                  class="btn group w-full flex-1 bg-linear-to-t from-indigo-600 to-indigo-500 bg-[length:100%_100%] bg-[bottom] text-white shadow-[inset_0px_1px_0px_0px_--theme(--color-white/.16)] hover:bg-[length:100%_150%]"
-                              >
-                                  <span class="relative inline-flex items-center">
-                                      <%= t('.search_button')  %>
-                                      <span
-                                          class="ml-1 tracking-normal text-white/50 transition-transform group-hover:translate-x-0.5"
-                                          >-&gt;</span
-                                      >
-                                  </span>
-                              </button>
-                          </div>
-                      </form>
+                      <%= form_with url: posts_path, method: :get do |f| %>
+                        <div class="flex gap-3">
+                            <input
+                                id="query"
+                                type="search"
+                                name="query"
+                                class="form-input w-full"
+                                placeholder="<%= t('.search_placeholder')  %>"
+                                aria-label="free-text"
+                                value="<%= @query %>"
+                            />
+                            <button
+                                class="btn group w-full flex-1 bg-linear-to-t from-indigo-600 to-indigo-500 bg-[length:100%_100%] bg-[bottom] text-white shadow-[inset_0px_1px_0px_0px_--theme(--color-white/.16)] hover:bg-[length:100%_150%]"
+                            >
+                                <span class="relative inline-flex items-center">
+                                    <%= t('.search_button')  %>
+                                    <span
+                                        class="ml-1 tracking-normal text-white/50 transition-transform group-hover:translate-x-0.5"
+                                        >-&gt;</span
+                                    >
+                                </span>
+                            </button>
+                        </div>
+                      <% end %>
                   </div>
 
                   <!-- Articles -->

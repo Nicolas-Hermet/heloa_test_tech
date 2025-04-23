@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.first(10)
+    @query = params[:query].presence
+    @posts = @query ? Post.search_by_content_title_and_tags(@query) : Post.all.first(10)
   end
 end
