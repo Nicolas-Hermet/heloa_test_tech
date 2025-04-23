@@ -1,0 +1,37 @@
+<article class="flex h-full flex-col transition-opacity" >
+    <header>
+      <%= link_to post_path(post), class: "group relative mb-6 block overflow-hidden rounded-2xl border border-gray-800/80 before:absolute before:inset-0 before:-z-10 before:bg-linear-to-br before:from-gray-900 before:via-indigo-500/50 before:to-indigo-500 before:opacity-50", tabindex: -1 do %>
+        <%= image_tag post.feature_image, alt: post.title, width: 347, height: 220, class: "aspect-101/64 w-full object-cover opacity-70 grayscale transition ease-out group-hover:scale-[1.02] group-hover:opacity-100 group-hover:grayscale-[20%]" %>
+      <% end %>
+
+      <!-- Primary Tag -->
+        <div class="mb-3">
+            <ul class="flex flex-wrap gap-2">
+                <li>
+                    <a
+                        class="btn-sm relative rounded-full bg-gray-800/40 px-2.5 py-0.5 text-xs font-normal before:pointer-events-none before:absolute before:inset-0 before:rounded-[inherit] before:border before:border-transparent before:[background:linear-gradient(to_bottom,--theme(--color-gray-700/.15),--theme(--color-gray-700/.5))_border-box] before:[mask-composite:exclude_!important] before:[mask:linear-gradient(white_0_0)_padding-box,_linear-gradient(white_0_0)] hover:bg-gray-800/60"
+                        href="#0"
+                    >
+                        <span
+                            class="bg-linear-to-r from-indigo-500 to-indigo-200 bg-clip-text text-transparent"
+                            ><%= post.primary_tag.name %></span
+                        >
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <h3 class="mb-2 font-nacelle text-lg font-semibold">
+            <a
+                class="text-gray-200 transition hover:text-white"
+                href="blog-post.html"
+                ><%= post.title  %></a
+            >
+        </h3>
+    </header>
+    <footer class="flex items-center gap-3">
+        <div class="text-sm font-medium text-gray-200">
+            <%= post.excerpt.truncate(150)  %>
+        </div>
+    </footer>
+</article>

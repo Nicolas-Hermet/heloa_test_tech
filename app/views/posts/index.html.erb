@@ -1,0 +1,93 @@
+<div>
+    <section>
+      <div class="mx-auto max-w-6xl px-4 sm:px-6">
+          <div class="py-12 md:py-20">
+              <!-- Section header -->
+              <div class="pb-12 text-center">
+                  <h1
+                      class="animate-[gradient_6s_linear_infinite] bg-[linear-gradient(to_right,var(--color-gray-200),var(--color-indigo-200),var(--color-gray-50),var(--color-indigo-300),var(--color-gray-200))] bg-[length:200%_auto] bg-clip-text pb-5 font-nacelle text-4xl font-semibold text-transparent md:text-5xl"
+                  >
+                  <%= t('.title') %>
+                  </h1>
+                  <div class="mx-auto max-w-3xl">
+                      <p class="text-xl text-indigo-200/65">
+                          <%= t('.search_field')  %>
+                      </p>
+                  </div>
+              </div>
+
+              <!-- Search field -->
+              <div x-data="{ category: 1 }">
+                  <div class="flex justify-center pb-12 max-md:hidden md:pb-20">
+                      <form class="mx-auto max-w-[440px]">
+                          <div class="flex gap-3">
+                              <input
+                                  id="free-text"
+                                  type="free-text"
+                                  class="form-input w-full"
+                                  placeholder="<%= t('.search_placeholder')  %>"
+                                  aria-label="free-text"
+                              />
+                              <button
+                                  class="btn group w-full flex-1 bg-linear-to-t from-indigo-600 to-indigo-500 bg-[length:100%_100%] bg-[bottom] text-white shadow-[inset_0px_1px_0px_0px_--theme(--color-white/.16)] hover:bg-[length:100%_150%]"
+                              >
+                                  <span class="relative inline-flex items-center">
+                                      <%= t('.search_button')  %>
+                                      <span
+                                          class="ml-1 tracking-normal text-white/50 transition-transform group-hover:translate-x-0.5"
+                                          >-&gt;</span
+                                      >
+                                  </span>
+                              </button>
+                          </div>
+                      </form>
+                  </div>
+
+                  <!-- Articles -->
+                  <div
+                      class="mx-auto grid max-w-sm items-start gap-8 sm:max-w-none sm:grid-cols-2 lg:grid-cols-3"
+                  >
+                      <!-- Articles -->
+                       <% @posts.each do |post| %>
+                        <%= render partial: 'shared/card', locals: { post: post } %>
+                      <% end %>
+
+                  </div>
+
+                  <!-- Pagination -->
+                  <nav class="mx-auto mt-16 flex max-w-xs items-center justify-between">
+                      <div>
+                          <a
+                              class="btn-sm group relative bg-linear-to-b from-gray-800 to-gray-800/60 bg-[length:100%_100%] bg-[bottom] text-gray-300 before:pointer-events-none before:absolute before:inset-0 before:rounded-[inherit] before:border before:border-transparent before:[background:linear-gradient(to_right,var(--color-gray-800),var(--color-gray-700),var(--color-gray-800))_border-box] before:[mask-composite:exclude_!important] before:[mask:linear-gradient(white_0_0)_padding-box,_linear-gradient(white_0_0)] hover:bg-[length:100%_150%] [&[inert]]:opacity-30"
+                              href="#0"
+                              inert
+                          >
+                              <span
+                                  class="mr-1 tracking-normal text-white/50 transition-transform group-hover:-translate-x-0.5"
+                                  >&lt;-</span
+                              >
+                              <%= t('.previous') %>
+                          </a>
+                      </div>
+                      <div class="text-sm text-gray-600">
+                          <span class="text-gray-200">1</span> /
+                          <span class="text-indigo-200/65">4</span>
+                      </div>
+                      <div>
+                          <a
+                              class="btn-sm group relative bg-linear-to-b from-gray-800 to-gray-800/60 bg-[length:100%_100%] bg-[bottom] text-gray-300 before:pointer-events-none before:absolute before:inset-0 before:rounded-[inherit] before:border before:border-transparent before:[background:linear-gradient(to_right,var(--color-gray-800),var(--color-gray-700),var(--color-gray-800))_border-box] before:[mask-composite:exclude_!important] before:[mask:linear-gradient(white_0_0)_padding-box,_linear-gradient(white_0_0)] hover:bg-[length:100%_150%] [&[inert]]:opacity-30"
+                              href="#0"
+                          >
+                              <%= t('.next')  %>
+                              <span
+                                  class="ml-1 tracking-normal text-white/50 transition-transform group-hover:translate-x-0.5"
+                                  >-&gt;</span
+                              >
+                          </a>
+                      </div>
+                  </nav>
+              </div>
+          </div>
+      </div>
+    </section>
+</div>
