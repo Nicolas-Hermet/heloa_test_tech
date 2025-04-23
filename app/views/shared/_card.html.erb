@@ -22,11 +22,7 @@
         </div>
 
         <h3 class="mb-2 font-nacelle text-lg font-semibold">
-            <a
-                class="text-gray-200 transition hover:text-white"
-                href="blog-post.html"
-                ><%= post.title  %></a
-            >
+            <%= link_to post.title, post_path(post), class: "text-gray-200 transition hover:text-white" %>
         </h3>
     </header>
     <footer class="flex items-center gap-3">

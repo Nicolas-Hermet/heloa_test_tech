@@ -1,0 +1,61 @@
+<section>
+    <div class="px-4 sm:px-6">
+        <div class="py-12 md:py-20">
+            <!-- Single article -->
+            <div class="mx-auto max-w-3xl">
+                <article>
+                    <!-- Post header -->
+                    <header class="mb-8">
+                        <h1
+                            class="animate-[gradient_6s_linear_infinite] bg-[linear-gradient(to_right,var(--color-gray-200),var(--color-indigo-200),var(--color-gray-50),var(--color-indigo-300),var(--color-gray-200))] bg-[length:200%_auto] bg-clip-text pb-4 font-nacelle text-3xl font-semibold text-transparent md:text-4xl"
+                        >
+                            <%= @post.title  %>
+                        </h1>
+                        <div class="mx-auto mb-5 max-w-3xl">
+                            <p class="text-lg text-indigo-200/65">
+                                <%= @post.excerpt  %>
+                            </p>
+                        </div>
+                        <div class="flex flex-col justify-between gap-3 sm:flex-row sm:items-center">
+
+                            <ul class="flex flex-wrap gap-2">
+                              <% @post.tags.each do |tag| %>
+                                <li>
+                                    <a
+                                        class="btn-sm relative rounded-full bg-gray-800/40 px-2.5 py-0.5 text-xs font-normal before:pointer-events-none before:absolute before:inset-0 before:rounded-[inherit] before:border before:border-transparent before:[background:linear-gradient(to_bottom,--theme(--color-gray-700/.15),--theme(--color-gray-700/.5))_border-box] before:[mask-composite:exclude_!important] before:[mask:linear-gradient(white_0_0)_padding-box,_linear-gradient(white_0_0)] hover:bg-gray-800/60"
+                                        href="#0"
+                                    >
+                                        <span
+                                            class="bg-linear-to-r from-indigo-500 to-indigo-200 bg-clip-text text-transparent"
+                                            ><%= tag.name  %></span
+                                        >
+                                    </a>
+                                </li>
+                                <% end %>
+
+                            </ul>
+                        </div>
+                    </header>
+                    <!-- Post image -->
+                    <figure
+                        class="relative my-8 overflow-hidden rounded-2xl border border-gray-800/80 before:absolute before:inset-0 before:-z-10 before:bg-linear-to-br before:from-gray-900 before:via-indigo-500/50 before:to-indigo-500 before:opacity-50 lg:-ml-32 lg:-mr-32"
+                    >
+                        <img
+                            class="opacity-70 grayscale"
+                            src="<%= @post.feature_image  %>"
+                            width="1104"
+                            height="576"
+                            alt="Article 01"
+                        />
+                    </figure>
+                    <!-- Post content -->
+                    <div
+                        class="prose max-w-none text-indigo-200/65 prose-headings:scroll-mt-24 prose-headings:font-nacelle prose-headings:font-semibold prose-headings:text-gray-200 prose-h2:mb-4 prose-h2:text-2xl prose-a:font-medium prose-a:text-indigo-500 prose-a:no-underline hover:prose-a:underline prose-blockquote:border-l prose-blockquote:border-indigo-500 prose-blockquote:pl-4 prose-blockquote:font-normal prose-blockquote:italic prose-blockquote:text-indigo-200/65 prose-figcaption:mt-3 prose-figcaption:text-center prose-figcaption:text-sm prose-figcaption:text-gray-600 prose-strong:font-medium prose-strong:text-gray-200 prose-code:rounded prose-code:bg-gray-100 prose-code:px-1 prose-code:py-0.5 prose-code:font-mono prose-code:text-gray-900 prose-code:before:content-[''] prose-code:after:content-[''] prose-pre:border prose-pre:border-gray-700 prose-pre:bg-gray-900 prose-img:rounded-2xl md:prose-h2:text-3xl [&_blockquote_p:first-of-type]:before:content-none [&_blockquote_p:last-of-type]:after:content-none"
+                    >
+                        <%= @post.html.html_safe  %>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
