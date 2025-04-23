@@ -4,7 +4,7 @@ class CreateTags < ActiveRecord::Migration[7.1]
       t.string :name
       t.string :slug
       t.text :description
-      t.string :feture_image
+      t.string :feature_image
       t.string :og_image
       t.string :og_title_string
       t.string :meta_title

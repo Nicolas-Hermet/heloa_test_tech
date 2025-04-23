@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_04_23_080101) do
+ActiveRecord::Schema[7.1].define(version: 2025_04_23_130807) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -18,6 +18,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_04_23_080101) do
   # Custom types defined in this database.
   # Note that some types may not work with other database engines. Be careful if changing database.
   create_enum "post_visibility", ["public", "internal"]
+  create_enum "tag_visibility", ["public", "internal"]
 
   create_table "posts", force: :cascade do |t|
     t.uuid "uuid"
@@ -57,6 +58,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_04_23_080101) do
     t.bigint "tag_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["post_id", "tag_id"], name: "index_posts_tags_on_post_id_and_tag_id", unique: true
     t.index ["post_id"], name: "index_posts_tags_on_post_id"
     t.index ["tag_id"], name: "index_posts_tags_on_tag_id"
   end
@@ -74,7 +76,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_04_23_080101) do
     t.string "name"
     t.string "slug"
     t.text "description"
-    t.string "feture_image"
+    t.string "feature_image"
     t.string "og_image"
     t.string "og_title_string"
     t.string "meta_title"
@@ -82,7 +84,9 @@ ActiveRecord::Schema[7.1].define(version: 2025_04_23_080101) do
     t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.enum "visibility", default: "internal", enum_type: "tag_visibility"
     t.index ["slug"], name: "index_tags_on_slug", unique: true
+    t.index ["visibility"], name: "index_tags_on_visibility"
   end
 
   add_foreign_key "posts_tags", "posts"
